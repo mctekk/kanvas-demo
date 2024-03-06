@@ -1,6 +1,7 @@
-import LoginForm from '@/components/loginForm';
-import Image from 'next/image';
+'use client'
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  return <LoginForm />;
+  useRouter().push('/sign-in');
+  return;
 }

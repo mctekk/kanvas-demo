@@ -1,7 +1,7 @@
 import KanvasCore, { genericAuthMiddleware } from '@kanvas/core';
-
+import { getCookie } from 'cookies-next';
 const getKey = async (): Promise<string | null> => {
-  return localStorage.getItem('token') || null; // wherever you have saved the user token
+  return getCookie('token')?.toString() || null; // wherever you have saved the user token
 };
 
 export const client = new KanvasCore({

@@ -1,12 +1,15 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { ServerCoreStore } from '@kanvas/phoenix';
+import RootClientLayout from './client';
+import { client } from '@/kanvas-client';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Kanvas demo",
-  description: "A implementation of the kanvas sdk",
+  title: 'Kanvas demo',
+  description: 'A implementation of the kanvas sdk',
 };
 
 export default function RootLayout({
@@ -15,8 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="h-full bg-white">
-      <body className={`${inter.className} h-full`}>{children}</body>
-    </html>
+    <ServerCoreStore sdk={client}>
+      <RootClientLayout >
+        <html className=''>
+          <body className={`${inter.className} flex min-h-screen min-w-full`}>
+            {children}
+          </body>
+        </html>
+      </RootClientLayout>
+    </ServerCoreStore>
   );
 }
