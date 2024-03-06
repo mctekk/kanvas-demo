@@ -1,3 +1,4 @@
+'use client'
 import { Templates } from '@kanvas/phoenix';
 import Image from 'next/image';
 import React from 'react';
